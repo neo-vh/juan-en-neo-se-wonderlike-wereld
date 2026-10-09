@@ -4,7 +4,7 @@ from rapidfuzz import fuzz, process # Ensure spelling mistakes can be accounted 
 
 
 command_map = { # Add imported classes / functions to dictionary along with trigger (key)
-    "hello": lambda: print("Hello}"),
+    "hello": lambda: print("Hello}"), # Example command
 
 }
 
@@ -30,7 +30,6 @@ def main():
 
         else:
             print(f'Command {instructions["action"]} does not exist. Maybe you meant {fuz_check[0]}?')
-            return
     
 
 def parse_raw(input: str):
