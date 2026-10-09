@@ -1,14 +1,20 @@
-import turtle
+import shlex
+from pathlib import Path # Later use (Commands from seperate files)
 
+def main():
 
-t = turtle.Turtle()
-screen = turtle.Screen()
+    instructions = parse_raw(input("Enter Command : "))
 
-def make_shape():
-    t.color("black")
+def parse_raw(input: str):
 
-    for i in range(100):
-        t.forward(100 + 1)
-        t.left(50 + 1)
+    objs = [o.strip() for o in shlex.split(input)]
 
-make_shape() 
+    structured_objs = {
+        "action" : objs[0].lower(),
+        "arguements": objs[1:]
+    }
+
+    print(structured_objs)
+
+while True:
+    main()
