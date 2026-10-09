@@ -1,10 +1,13 @@
 import shlex
 from pathlib import Path # Later use (Commands from seperate files)
 from rapidfuzz import fuzz, process # Ensure spelling mistakes can be accounted for (accepted)
+from commands_files.turtle_example_commands import draw_square, draw_triangle # Example Commands from separate file
 
 
 command_map = { # Add imported classes / functions to dictionary along with trigger (key)
-    "hello": lambda: print("Hello}"), # Example command
+    "hello": lambda x: print(f"Hello {x[1]}"), # Example command
+    "square": draw_square,
+    "triangle": draw_triangle
 
 }
 
@@ -15,7 +18,7 @@ def main():
     if instructions["action"] in command_map:
         try:
             command_map[instructions["action"]](instructions["arguments"])
-        except TypeError as e:
+        except (TypeError, IndexError, ValueError) as e:
             print(f"Error {e} enocunterd while running command")
 
     else:
@@ -38,7 +41,7 @@ def parse_raw(input: str):
 
     structured_objs = {
         "action" : objs[0].lower(),
-        "arguments": objs[1:]
+        "arguments": objs[1:] if len(objs[1:]) > 1 else objs[1]
     }
 
     print(structured_objs)
