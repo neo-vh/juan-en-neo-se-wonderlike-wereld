@@ -17,3 +17,7 @@ def draw_triangle(size):
     for _ in range(3):
         turtle.forward(size)
         turtle.right(-120)
+
+        #retard 
+
+        # neo n bitch 
