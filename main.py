@@ -1,6 +1,7 @@
 import shlex
 from rapidfuzz import fuzz, process # Ensure spelling mistakes can be accounted for (accepted)
 from commands_files.turtle_example_commands import draw_square, draw_triangle # Example Commands from separate file
+from commands_files.file_ops import find # File operations commands
 
 
 command_map = { # Add imported classes / functions to dictionary along with trigger (key)
