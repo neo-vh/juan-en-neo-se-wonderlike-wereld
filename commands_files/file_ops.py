@@ -19,7 +19,7 @@ def find(filename: str, search_root = "C:\\"):
                         stack.append(e.path)
                     elif e.name == filename:
                         found.append(e.path)
-        except PermissionError, FileNotFoundError, OSError:
+        except (PermissionError, FileNotFoundError, OSError):
             pass
 
 
