@@ -24,7 +24,7 @@ command_map = { # Add imported classes / functions to dictionary along with trig
 
 def main():
 
-    instructions = parse_raw(input(f"\nEnter Command : "))
+    instructions = parse_raw(input(f"\n{blue + Style.DIM}Enter Command {reset}: "))
 
     if instructions["action"] in command_map:
         try:

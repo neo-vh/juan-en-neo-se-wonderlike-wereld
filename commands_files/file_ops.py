@@ -28,7 +28,8 @@ def find(filename: str, search_root = "C:\\"):
         print("->  " + p)
 
 def tree(dir_path: str):
-    pass
+
+    pass # Display the entire directory (dir_path) as a tree of dictionaries similar to the output of check but subfolders get shown below folders with indenting
 
 def check(dir_path: str): # Gather info about a given folder and display it
 
@@ -75,8 +76,8 @@ def check(dir_path: str): # Gather info about a given folder and display it
                             exes.append(e.path)
 
             
-        except (PermissionError, FileNotFoundError, OSError) as e:
-            print(e)
+        except (PermissionError, FileNotFoundError, OSError):
+            pass
 
     for k, v in found.items():
         print(f"\n{k} :")
