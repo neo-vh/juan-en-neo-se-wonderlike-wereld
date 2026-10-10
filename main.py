@@ -2,6 +2,13 @@ import shlex
 from rapidfuzz import fuzz, process # Ensure spelling mistakes can be accounted for (accepted)
 from commands_files.turtle_example_commands import draw_square, draw_triangle # Example Commands from separate file
 from commands_files.file_ops import find # File operations commands
+from colorama import init, Fore, Style # For colored output
+
+init(autoreset=True) # Initialize colorama
+reset = Style.RESET_ALL # Reset colorama styles
+red = Fore.RED
+blue = Fore.BLUE
+green = Fore.GREEN
 
 
 command_map = { # Add imported classes / functions to dictionary along with trigger (key)
