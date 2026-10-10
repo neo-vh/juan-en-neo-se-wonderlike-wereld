@@ -1,5 +1,4 @@
 import shlex
-from pathlib import Path # Later use (Commands from seperate files)
 from rapidfuzz import fuzz, process # Ensure spelling mistakes can be accounted for (accepted)
 from commands_files.turtle_example_commands import draw_square, draw_triangle # Example Commands from separate file
 
