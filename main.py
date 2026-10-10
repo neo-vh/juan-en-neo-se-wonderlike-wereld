@@ -7,13 +7,15 @@ from commands_files.file_ops import find # File operations commands
 command_map = { # Add imported classes / functions to dictionary along with trigger (key)
     "hello": lambda x: print(f"Hello {x[1]}"), # Example command
     "square": draw_square,
-    "triangle": draw_triangle
+    "triangle": draw_triangle,
+    "find": find,
+    "end": lambda x: exit(0)
 
 }
 
 def main():
 
-    instructions = parse_raw(input("Enter Command : "))
+    instructions = parse_raw(input("\nEnter Command : "))
 
     if instructions["action"] in command_map:
         try:
@@ -41,10 +43,10 @@ def parse_raw(input: str):
 
     structured_objs = {
         "action" : objs[0].lower(),
-        "arguments": objs[1:] if len(objs[1:]) > 1 else objs[1]
+        "arguments": objs[1:] if len(objs[1:]) > 1 else objs[1] if len(objs[1:]) == 1 else None
     }
 
-    print(structured_objs)
+    print(structured_objs) # For debugging purposes, can be removed later
 
     return structured_objs
 
