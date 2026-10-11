@@ -41,6 +41,10 @@ def find(filename: str, search_root = "C:\\"): # Can be modified to allow no ext
             pass
 
 
+    if len(found) == 0:
+        print(f"No file by the name {filename} could be found in {search_root}")
+        return
+    
     print(f"Located {len(found)} possible matches :")
     for p in enumerate(found):
         print(f"->  [{p[0] + 1}] {p[1]}")
@@ -72,7 +76,11 @@ def tree(dir_path: str):
 
     pass # Display the entire directory (dir_path) as a tree of dictionaries similar to the output of check but subfolders get shown below folders with indenting
 
-def check(dir_path: str): # Gather info about a given folder and display it
+def check(dir_path: str): # Gather info about a given folder and display it (currently causing bugs fix urgently)
+
+    if not (os.path.exists(dir_path)):
+        print(f"{dir_path} is not a real path ensure it is a absolute path and was spelled correctly")
+        return
 
     total_size = 0 # Bytes
     total_folders = 0
@@ -120,6 +128,7 @@ def check(dir_path: str): # Gather info about a given folder and display it
         except (PermissionError, FileNotFoundError, OSError):
             pass
 
+
     for k, v in found.items():
         print(f"\n{k} :")
         for f in v:
@@ -150,4 +159,3 @@ def check(dir_path: str): # Gather info about a given folder and display it
     print(f"Total Subfolders : {total_folders}")
     print(f"Largest File : {biggest_file[1]}")
     print(f"Exe(s) : {exes if len(exes) > 0 else "No Exe(s)"}\n")
-
