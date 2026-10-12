@@ -1,5 +1,6 @@
 import os, subprocess, platform
 from pathlib import Path
+from utils import log
 
 def reveal_in_explorer(path: str): # Helper for find and standalone could be standalone command (mimicks reveal in explorer options on vs code)
 
@@ -70,13 +71,13 @@ def find(filename: str, search_root = "C:\\"): # Can be modified to allow no ext
         return
 
     reveal_in_explorer(found[correct_index - 1])
- 
+
 
 def tree(dir_path: str):
 
     pass # Display the entire directory (dir_path) as a tree of dictionaries similar to the output of check but subfolders get shown below folders with indenting
 
-def check(dir_path: str): # Gather info about a given folder and display it (currently causing bugs fix urgently)
+def check(dir_path: str): # Gather info about a given folder and display it
 
     if not (os.path.exists(dir_path)):
         print(f"{dir_path} is not a real path ensure it is a absolute path and was spelled correctly")
@@ -117,9 +118,11 @@ def check(dir_path: str): # Gather info about a given folder and display it (cur
 
                         if not os.path.splitext(e.name)[1] in most_common_extensions:
                             most_common_extensions[os.path.splitext(e.name)[1]] = 1
+                            print(most_common_extensions)
 
                         else:
                             most_common_extensions[os.path.splitext(e.name)[1]] += 1
+                            print(most_common_extensions)
 
                         if os.path.splitext(e.name)[1] == ".exe":
                             exes.append(e.path)
@@ -127,8 +130,8 @@ def check(dir_path: str): # Gather info about a given folder and display it (cur
             
         except (PermissionError, FileNotFoundError, OSError):
             pass
-
-
+    
+    
     for k, v in found.items():
         print(f"\n{k} :")
         for f in v:
@@ -159,3 +162,6 @@ def check(dir_path: str): # Gather info about a given folder and display it (cur
     print(f"Total Subfolders : {total_folders}")
     print(f"Largest File : {biggest_file[1]}")
     print(f"Exe(s) : {exes if len(exes) > 0 else "No Exe(s)"}\n")
+
+if __name__ == "__main__":
+    pass # Run logic for testing
