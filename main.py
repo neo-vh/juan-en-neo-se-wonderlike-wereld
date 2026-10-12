@@ -14,11 +14,10 @@ green = Fore.GREEN
 
 command_map = { # Add imported classes / functions to dictionary along with trigger (key)
     "hello": lambda x: print(f"Hello {x[1]}"), # Example command
-    "square": draw_square,
-    "triangle": draw_triangle,
     "find": find,
     "end": lambda x: exit(0),
-    "check": check
+    "check": check,
+    
 
 }
 
